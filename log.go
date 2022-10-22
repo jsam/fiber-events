@@ -28,7 +28,7 @@ type Record struct {
 }
 
 // Log - logger will print JSON formatted logs onto STDOUT
-func Log(ctx *fiber.Ctx) {
+func Log(ctx *fiber.Ctx) error {
 	start := time.Now()
 	logger := Record{
 		IP:                  ctx.IP(),
@@ -54,4 +54,10 @@ func Log(ctx *fiber.Ctx) {
 
 	logStr, _ := json.Marshal(logger)
 	log.Printf("%s", string(logStr))
+
+	return nil
+}
+
+func New(config ...fiber.Config) fiber.Handler {
+	return Log
 }
