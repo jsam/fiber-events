@@ -1,4 +1,4 @@
-module gofiber-jsonlog
+module github.com/jsam/gofiber-jsonlog
 
 go 1.19
 
