@@ -29,7 +29,6 @@ type HTTPEvent struct {
 	Metrics             []*MetricEvent `json:"-"`
 }
 
-// Handler - logger will print JSON formatted logs onto STDOUT
 func Handler(ctx *fiber.Ctx) error {
 	start := time.Now()
 
