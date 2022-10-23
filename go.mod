@@ -1,4 +1,4 @@
-module github.com/jsam/gofiber-jsonlog
+module github.com/jsam/fiber-events
 
 go 1.19
 
