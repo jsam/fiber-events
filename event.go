@@ -77,5 +77,6 @@ func Handler(ctx *fiber.Ctx) error {
 }
 
 func New(config ...fiber.Config) fiber.Handler {
+	log.SetFlags(0)
 	return Handler
 }
