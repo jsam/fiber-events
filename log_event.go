@@ -2,20 +2,22 @@ package fiberEvents
 
 import "github.com/gofiber/fiber/v2"
 
-type Log struct {
-	Level   string `json:"level"`
-	Message string `json:"message"`
+type LogEvent struct {
+	EventType string `json:"event_type"`
+	Level     string `json:"level"`
+	Message   string `json:"message"`
 }
 
 func eventLogAppend(c *fiber.Ctx, level string, message string) {
-	event := c.Locals("event").(*Event)
+	event := c.Locals("event").(*HTTPEvent)
 
-	log := &Log{
-		Level:   level,
-		Message: message,
+	log := &LogEvent{
+		EventType: "log",
+		Level:     level,
+		Message:   message,
 	}
 
-	event.Tracelog = append(event.Tracelog, log)
+	event.Logs = append(event.Logs, log)
 }
 
 func Emergency(c *fiber.Ctx, message string) {
