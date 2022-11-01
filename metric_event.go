@@ -9,7 +9,7 @@ import (
 type MetricEvent struct {
 	EventType string      `json:"event_type"`
 	Name      string      `json:"name"`
-	Timestamp string      `json:"timestamp"`
+	CreatedAt time.Time   `json:"created_at"`
 	Data      interface{} `json:"data"`
 }
 
@@ -19,7 +19,7 @@ func AddMetric(ctx *fiber.Ctx, name string, data interface{}) {
 	metric := &MetricEvent{
 		EventType: "metric",
 		Name:      name,
-		Timestamp: time.Now().String(),
+		CreatedAt: time.Now(),
 		Data:      data,
 	}
 	event.Metrics = append(event.Metrics, metric)
