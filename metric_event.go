@@ -7,13 +7,13 @@ import (
 )
 
 type MetricEvent struct {
-	EventType string                 `json:"event_type"`
-	Name      string                 `json:"name"`
-	Timestamp string                 `json:"timestamp"`
-	Data      map[string]interface{} `json:"data"`
+	EventType string      `json:"event_type"`
+	Name      string      `json:"name"`
+	Timestamp string      `json:"timestamp"`
+	Data      interface{} `json:"data"`
 }
 
-func AddMetric(ctx *fiber.Ctx, name string, data map[string]interface{}) {
+func AddMetric(ctx *fiber.Ctx, name string, data interface{}) {
 	event := ctx.Locals("event").(*HTTPEvent)
 
 	metric := &MetricEvent{
